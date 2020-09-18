@@ -1,0 +1,26 @@
+{
+  "name": "faq-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Matthew",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc && node build/bot.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^5.0.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^14.10.1",
+    "@types/pg": "^7.14.4",
+    "@types/sqlite3": "^3.1.6",
+    "better-sqlite3": "^5.0.0",
+    "discord.js": "^12.3.1",
+    "discord.js-commando": "https://github.com/discordjs/Commando.git",
+    "dotenv": "^8.2.0",
+    "pg": "^8.3.3",
+    "sqlite": "^4.0.14",
+    "sqlite3": "^5.0.0"
+  }
+}
