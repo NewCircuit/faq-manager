@@ -15,14 +15,11 @@ export const pg = connect_to_db(<string>process.env.DATABASE_URL);
 client.login(<string>process.env.TOKEN);
 
 client.registry.registerGroups([
-    ['mod', 'mod commands'],
-    ['misc', 'misc commands'],
     ['faq', 'faq commands']])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
-    client.user?.setStatus("idle")
     console.log(`Logged in as ${client?.user?.username}`)
 });
 

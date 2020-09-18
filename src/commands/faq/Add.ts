@@ -25,7 +25,6 @@ module.exports = class AddCommand extends commando.Command {
                     type: 'string'
                 }
             ],
-            argsPromptLimit: 0,
         });
         this.channel = <string>process.env.CHANNEL_ID
     }

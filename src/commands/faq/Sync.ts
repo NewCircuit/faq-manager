@@ -31,7 +31,7 @@ module.exports = class SyncCommand extends commando.Command {
 
         let faqs = await pg.query("SELECT question, answer, message_id FROM faq.faq WHERE active = true ORDER BY id");
 
-        faqs.rows.forEach((row) => {
+        faqs.rows.forEach(row => {
             let embed = faq_embed(row.question, row.answer)
             channel.send(embed).then(message => {
                 pg.query("UPDATE faq.faq SET message_id = $1 WHERE message_id = $2", [message.id, row.message_id])

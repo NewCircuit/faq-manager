@@ -4,11 +4,8 @@ import {Message, TextChannel} from "discord.js";
 import {pg} from "../../bot";
 import {faq_embed} from "../../utils";
 
-interface Args {
-    context: string
-}
-
 module.exports = class GetCommand extends commando.Command {
+    private readonly channel: string;
     constructor(client: commando.Client) {
         super(client, {
             name: 'get',
@@ -17,24 +14,25 @@ module.exports = class GetCommand extends commando.Command {
             description: 'Get question',
             args: [
                 {
-                    key: "context",
+                    key: "id",
                     prompt: "What question do you want to be fetched?",
                     type: 'string',
                     infinite: true
                 }
             ]
         });
+        this.channel = <string>process.env.CHANNEL_ID
     }
 
-    async run(msg: CommandoMessage, {context}: {context: string}): Promise<Message[]> {
-        let res = await pg.query("SELECT question, answer FROM faq.faq WHERE question = $1", [context[0]]);
+    async run(msg: CommandoMessage, {id}: {id: string}): Promise<Message[]> {
+        let res = await pg.query("SELECT question, answer, id FROM faq.faq WHERE message_id = $1 OR id = $1::bigint LIMIT 1", [id[0]]);
         if (res.rowCount === 0) {
             await msg.reply("Unable to locate FAQ");
             return Promise.resolve([]);
         }
         let embed = faq_embed(res.rows[0].question, res.rows[0].answer)
-        let channel = (await this.client.channels.fetch("756303306841784411", true)) as TextChannel;
-        await channel.send(embed)
+        embed.setFooter(`ID: ${res.rows[0].id}`)
+        await msg.embed(embed)
         return Promise.resolve([])
     }
 }
