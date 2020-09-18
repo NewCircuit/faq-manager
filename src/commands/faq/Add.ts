@@ -30,7 +30,7 @@ module.exports = class AddCommand extends commando.Command {
     }
     async run(msg: CommandoMessage, {question, answer}: { question: string, answer: string }): Promise<Message[]> {
         let embed = faq_embed(question, answer);
-        let channel = (await this.client.channels.fetch("738174661954764911", true)) as TextChannel;
+        let channel = (await this.client.channels.fetch(this.channel, true)) as TextChannel;
         let message = await channel.send(embed)
         await pg.query(
             "INSERT INTO faq.faq (guild_id, question, answer, message_id) VALUES ($1, $2, $3, $4)",
