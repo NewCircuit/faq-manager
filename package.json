@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/better-sqlite3": "^5.0.0",
     "@types/dotenv": "^8.2.0",
+    "@types/js-yaml": "^3.12.5",
     "@types/node": "^14.10.1",
     "@types/pg": "^7.14.4",
     "@types/sqlite3": "^3.1.6",
@@ -19,6 +20,7 @@
     "discord.js": "^12.3.1",
     "discord.js-commando": "https://github.com/discordjs/Commando.git",
     "dotenv": "^8.2.0",
+    "js-yaml": "^3.14.0",
     "pg": "^8.3.3",
     "sqlite": "^4.0.14",
     "sqlite3": "^5.0.0"

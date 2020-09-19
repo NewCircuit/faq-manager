@@ -1,7 +1,7 @@
 import * as commando from 'discord.js-commando'
 import {CommandoMessage} from "discord.js-commando";
 import {Message, TextChannel} from "discord.js";
-import {pg} from "../../bot";
+import {config, pg} from "../../bot";
 import {faqEmbed} from "../../utils";
 
 module.exports = class GetCommand extends commando.Command {
@@ -21,10 +21,10 @@ module.exports = class GetCommand extends commando.Command {
                 }
             ]
         });
-        this.channel = <string>process.env.CHANNEL_ID
+        this.channel = config.channel_id
     }
 
-    public async run(msg: CommandoMessage, {id}: {id: string}): Promise<Message[]> {
+    public async run(msg: CommandoMessage, {id}: {id: string}) {
         let res = await pg.query("SELECT question, answer, id FROM faq.faq WHERE message_id = $1 OR id = $1::bigint LIMIT 1", [id[0]]);
         if (res.rowCount === 0) {
             await msg.reply("Unable to locate FAQ");
@@ -32,7 +32,6 @@ module.exports = class GetCommand extends commando.Command {
         }
         let embed = faqEmbed(res.rows[0])
         embed.setFooter(`ID: ${res.rows[0].id}`)
-        await msg.embed(embed)
-        return Promise.resolve([])
+        return await msg.embed(embed)
     }
 }

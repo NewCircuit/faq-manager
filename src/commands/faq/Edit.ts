@@ -1,7 +1,7 @@
 import * as commando from 'discord.js-commando'
 import {CommandoMessage} from "discord.js-commando";
 import {Message, TextChannel} from "discord.js";
-import {pg} from "../../bot";
+import {config, pg} from "../../bot";
 import {faqEmbed} from "../../utils";
 
 module.exports = class EditCommand extends commando.Command {
@@ -31,10 +31,10 @@ module.exports = class EditCommand extends commando.Command {
                 }
             ],
         });
-        this.channel = <string>process.env.CHANNEL_ID
+        this.channel = config.channel_id
     }
 
-    public async run(msg: CommandoMessage, {id, question, answer}: {id: string, question: string, answer: string}): Promise<Message[]> {
+    public async run(msg: CommandoMessage, {id, question, answer}: {id: string, question: string, answer: string}) {
         let res = await pg.query("SELECT question, answer, id, message_id FROM faq.faq WHERE message_id = $1 OR id = $1::bigint LIMIT 1", [id]);
         if (res.rowCount === 0) {
             await msg.reply("Unable to locate faq");
@@ -47,6 +47,6 @@ module.exports = class EditCommand extends commando.Command {
         await message.edit(embed)
         await pg.query("UPDATE faq.faq SET question = $1, answer = $2 WHERE id = $3", [res.rows[0].question, res.rows[0].answer, res.rows[0].id]);
         await msg.react("✅");
-        return Promise.resolve([]);
+        return null
     }
 }

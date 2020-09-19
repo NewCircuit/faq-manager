@@ -1,7 +1,7 @@
 import * as commando from 'discord.js-commando'
 import {Message, TextChannel} from "discord.js";
 import {CommandoMessage} from "discord.js-commando";
-import {pg} from "../../bot";
+import {config, pg} from "../../bot";
 import {faqEmbed} from "../../utils";
 
 module.exports = class SyncCommand extends commando.Command {
@@ -13,7 +13,7 @@ module.exports = class SyncCommand extends commando.Command {
             memberName: 'sync',
             description: 'Syncs the message',
         });
-        this.channel = <string>process.env.CHANNEL_ID
+        this.channel = config.channel_id
     }
 
     public async run(msg: CommandoMessage) {
@@ -42,6 +42,6 @@ module.exports = class SyncCommand extends commando.Command {
         })
 
         await msg.react("✅")
-        return Promise.resolve([])
+        return null
     }
 }
