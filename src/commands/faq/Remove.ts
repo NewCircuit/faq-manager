@@ -25,15 +25,15 @@ export = class SyncCommand extends commando.Command {
         this.channel = config.channel_id
     }
 
-    public async run(msg: CommandoMessage, {id}: {id: string}) {
+    public async run(msg: CommandoMessage, {id}: {id: string}): Promise<null> {
         let res = await pg.query("SELECT message_id, active FROM faq.faq WHERE message_id = $1 OR id = $1::bigint LIMIT 1", [id[0]]);
         if (res.rowCount === 0) {
             await msg.reply("Unable to locate that message, please check if the message id is correct");
-            return Promise.resolve([]);
+            return null
         }
         if (res.rows[0].active === false) {
             await msg.reply("This faq is already deleted");
-            return Promise.resolve([]);
+            return null
         }
 
         let channel = (await this.client.channels.fetch(this.channel)) as TextChannel;

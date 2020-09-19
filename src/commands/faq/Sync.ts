@@ -16,7 +16,7 @@ export = class SyncCommand extends commando.Command {
         this.channel = config.channel_id
     }
 
-    public async run(msg: CommandoMessage) {
+    public async run(msg: CommandoMessage): Promise<null> {
         let channel = (await this.client.channels.fetch(this.channel, true)) as TextChannel;
         let messages = await channel.messages.fetch({}, false)
 

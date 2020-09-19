@@ -27,7 +27,7 @@ export = class AddCommand extends commando.Command {
         });
         this.channel = config.channel_id
     }
-    public async run(msg: CommandoMessage, {question, answer}: { question: string, answer: string }) {
+    public async run(msg: CommandoMessage, {question, answer}: { question: string, answer: string }): Promise<null> {
         let embed = faqEmbed({question, answer});
         let channel = (await this.client.channels.fetch(this.channel, true)) as TextChannel;
         let message = await channel.send(embed)
@@ -35,6 +35,6 @@ export = class AddCommand extends commando.Command {
             "INSERT INTO faq.faq (guild_id, question, answer, message_id) VALUES ($1, $2, $3, $4)",
             [msg.guild.id, question, answer, message.id]
         );
-        return message
+        return null
     }
 }

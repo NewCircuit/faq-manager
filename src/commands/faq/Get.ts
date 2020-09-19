@@ -23,14 +23,15 @@ export = class GetCommand extends commando.Command {
         this.channel = config.channel_id
     }
 
-    public async run(msg: CommandoMessage, {id}: {id: string}) {
+    public async run(msg: CommandoMessage, {id}: {id: string}): Promise<null> {
         let res = await pg.query("SELECT question, answer, id FROM faq.faq WHERE message_id = $1 OR id = $1::bigint LIMIT 1", [id[0]]);
         if (res.rowCount === 0) {
             await msg.reply("Unable to locate FAQ");
-            return Promise.resolve([]);
+            return null
         }
         let embed = faqEmbed(res.rows[0])
         embed.setFooter(`ID: ${res.rows[0].id}`)
-        return await msg.embed(embed)
+        await msg.embed(embed)
+        return null
     }
 }

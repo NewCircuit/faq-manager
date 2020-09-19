@@ -34,11 +34,11 @@ export = class EditCommand extends commando.Command {
         this.channel = config.channel_id
     }
 
-    public async run(msg: CommandoMessage, {id, question, answer}: {id: string, question: string, answer: string}) {
+    public async run(msg: CommandoMessage, {id, question, answer}: {id: string, question: string, answer: string}): Promise<null> {
         let res = await pg.query("SELECT question, answer, id, message_id FROM faq.faq WHERE message_id = $1 OR id = $1::bigint LIMIT 1", [id]);
         if (res.rowCount === 0) {
             await msg.reply("Unable to locate faq");
-            return Promise.resolve([]);
+            return null;
         }
 
         let embed = faqEmbed({question, answer});
