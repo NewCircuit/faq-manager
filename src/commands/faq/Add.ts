@@ -2,7 +2,7 @@ import * as commando from 'discord.js-commando';
 import {Message, TextChannel} from 'discord.js'
 import {CommandoMessage} from "discord.js-commando";
 import {pg} from "../../bot";
-import {faq_embed} from '../../utils'
+import {faqEmbed} from '../../utils'
 
 
 module.exports = class AddCommand extends commando.Command {
@@ -28,8 +28,8 @@ module.exports = class AddCommand extends commando.Command {
         });
         this.channel = <string>process.env.CHANNEL_ID
     }
-    async run(msg: CommandoMessage, {question, answer}: { question: string, answer: string }): Promise<Message[]> {
-        let embed = faq_embed(question, answer);
+    public async run(msg: CommandoMessage, {question, answer}: { question: string, answer: string }): Promise<Message[]> {
+        let embed = faqEmbed({question, answer});
         let channel = (await this.client.channels.fetch(this.channel, true)) as TextChannel;
         let message = await channel.send(embed)
         await pg.query(

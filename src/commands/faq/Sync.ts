@@ -2,7 +2,7 @@ import * as commando from 'discord.js-commando'
 import {Message, TextChannel} from "discord.js";
 import {CommandoMessage} from "discord.js-commando";
 import {pg} from "../../bot";
-import {faq_embed} from "../../utils";
+import {faqEmbed} from "../../utils";
 
 module.exports = class SyncCommand extends commando.Command {
     private readonly channel: string;
@@ -16,7 +16,7 @@ module.exports = class SyncCommand extends commando.Command {
         this.channel = <string>process.env.CHANNEL_ID
     }
 
-    async run(msg: CommandoMessage): Promise<Message[]> {
+    public async run(msg: CommandoMessage) {
         let channel = (await this.client.channels.fetch(this.channel, true)) as TextChannel;
         let messages = await channel.messages.fetch({}, false)
 
@@ -32,7 +32,7 @@ module.exports = class SyncCommand extends commando.Command {
         let faqs = await pg.query("SELECT question, answer, message_id FROM faq.faq WHERE active = true ORDER BY id");
 
         faqs.rows.forEach(row => {
-            let embed = faq_embed(row.question, row.answer)
+            let embed = faqEmbed(row)
             channel.send(embed).then(message => {
                 pg.query("UPDATE faq.faq SET message_id = $1 WHERE message_id = $2", [message.id, row.message_id])
                     .then()

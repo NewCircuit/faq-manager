@@ -25,7 +25,7 @@ module.exports = class SyncCommand extends commando.Command {
         this.channel = <string>process.env.CHANNEL_ID
     }
 
-    async run(msg: CommandoMessage, {id}: {id: string}): Promise<Message[]> {
+    public async run(msg: CommandoMessage, {id}: {id: string}): Promise<Message[]> {
         let res = await pg.query("SELECT message_id, active FROM faq.faq WHERE message_id = $1 OR id = $1::bigint LIMIT 1", [id[0]]);
         if (res.rowCount === 0) {
             await msg.reply("Unable to locate that message, please check if the message id is correct");

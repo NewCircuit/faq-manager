@@ -1,12 +1,12 @@
 import {MessageEmbed} from "discord.js";
 
-export function faq_embed(question: string, answer: string): MessageEmbed {
+export function faqEmbed(row: {question: string, answer: string}): MessageEmbed {
     return new MessageEmbed()
         .setColor(0x1385ef)
-        .setTitle(question)
-        .setDescription(answer)
+        .setTitle(row.question)
+        .setDescription(row.answer)
 }
 
 export default {
-    faq_embed
+    faqEmbed
 }
