@@ -1,5 +1,6 @@
 import fs from "fs";
 import * as yaml from "js-yaml";
+
 interface Config {
     database_url: string
     channel_id: string

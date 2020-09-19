@@ -4,8 +4,7 @@ import {CommandoMessage} from "discord.js-commando";
 import {config, pg} from "../../bot";
 import {faqEmbed} from '../../utils'
 
-
-module.exports = class AddCommand extends commando.Command {
+export = class AddCommand extends commando.Command {
     private readonly channel: string;
     constructor(client: commando.Client) {
         super(client, {

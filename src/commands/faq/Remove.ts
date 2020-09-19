@@ -3,7 +3,7 @@ import {Message, TextChannel} from "discord.js";
 import {CommandoMessage} from "discord.js-commando";
 import {config, pg} from "../../bot";
 
-module.exports = class SyncCommand extends commando.Command {
+export = class SyncCommand extends commando.Command {
     private readonly channel: string;
     constructor(client: commando.Client) {
         super(client, {

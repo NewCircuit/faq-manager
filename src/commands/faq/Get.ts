@@ -1,10 +1,9 @@
 import * as commando from 'discord.js-commando'
 import {CommandoMessage} from "discord.js-commando";
-import {Message, TextChannel} from "discord.js";
 import {config, pg} from "../../bot";
 import {faqEmbed} from "../../utils";
 
-module.exports = class GetCommand extends commando.Command {
+export = class GetCommand extends commando.Command {
     private readonly channel: string;
     constructor(client: commando.Client) {
         super(client, {
