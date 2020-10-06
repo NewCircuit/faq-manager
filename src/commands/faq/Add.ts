@@ -1,5 +1,5 @@
 import * as commando from 'discord.js-commando';
-import {Message, TextChannel} from 'discord.js'
+import {TextChannel} from 'discord.js'
 import {CommandoMessage} from "discord.js-commando";
 import {config, pg} from "../../bot";
 import {faqEmbed} from '../../utils'
