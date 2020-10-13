@@ -11,6 +11,7 @@ export = class GetCommand extends commando.Command {
             group: 'faq',
             memberName: 'faq',
             description: 'Get question',
+            userPermissions: ['MANAGE_MESSAGES'],
             args: [
                 {
                     key: "id",

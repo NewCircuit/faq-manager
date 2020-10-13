@@ -13,6 +13,7 @@ export = class SyncCommand extends commando.Command {
             aliases: ['delete', 'rm'],
             description: 'Deletes a faq',
             argsPromptLimit: 0,
+            userPermissions: ['MANAGE_MESSAGES'],
             args: [
                 {
                     key: "id",

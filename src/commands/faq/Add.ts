@@ -12,6 +12,7 @@ export = class AddCommand extends commando.Command {
             group: 'faq',
             memberName: 'add',
             description: 'Adds a faq message',
+            userPermissions: ['MANAGE_MESSAGES'],
             args: [
                 {
                     key: 'question',

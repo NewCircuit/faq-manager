@@ -2,7 +2,6 @@ import * as pg from 'pg'
 import { Config } from './config';
 
 export function connectToDb(config: Config) {
-    console.log(config.database)
     const client = new pg.Client({
         user: config.database.user,
         host: config.database.host,

@@ -13,6 +13,7 @@ export = class EditCommand extends commando.Command {
             memberName: 'edit',
             description: 'edits a faq question',
             aliases: ['change', 'set'],
+            userPermissions: ['MANAGE_MESSAGES'],
             args: [
                 {
                     key: 'id',

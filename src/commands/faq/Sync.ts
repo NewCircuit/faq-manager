@@ -12,6 +12,7 @@ export = class SyncCommand extends commando.Command {
             group: 'faq',
             memberName: 'sync',
             description: 'Syncs the message',
+            userPermissions: ['MANAGE_MESSAGES'],
         });
         this.channel = config.channel_id
     }
