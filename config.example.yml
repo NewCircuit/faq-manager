@@ -1,4 +1,9 @@
 ---
-database_url: ""
 channel_id: ""
 token: ""
+database: 
+  user: 
+  host: 
+  database: 
+  password: 
+  port: 5432

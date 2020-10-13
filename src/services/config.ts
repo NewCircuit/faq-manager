@@ -1,10 +1,16 @@
 import fs from "fs";
 import * as yaml from "js-yaml";
 
-interface Config {
-    database_url: string
+export interface Config {
     channel_id: string
     token: string
+    database: {
+        user: string,
+        host: string,
+        database: string,
+        password: string,
+        port: number
+    }
 }
 
 export function loadConfig(): Config {

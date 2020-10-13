@@ -5,7 +5,7 @@ import {connectToDb} from "./services/database";
 import {loadConfig} from "./services/config";
 
 export let config = loadConfig();
-export const pg = connectToDb(config.database_url);
+export const pg = connectToDb(config);
 
 const client = new commando.CommandoClient({
     commandPrefix: '.faq',
