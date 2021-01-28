@@ -12,6 +12,7 @@ export = class GetCommand extends commando.Command {
             memberName: 'faq',
             description: 'Get question',
             userPermissions: ['MANAGE_MESSAGES'],
+            guildOnly: true,
             args: [
                 {
                     key: "id",

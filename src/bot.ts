@@ -9,7 +9,7 @@ export const pg = connectToDb(config);
 
 const client = new commando.CommandoClient({
     commandPrefix: '.faq',
-    owner: '357918459058978816'
+    owner: '357918459058978816',
 });
 
 client.login(config.token);

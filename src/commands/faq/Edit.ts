@@ -14,6 +14,7 @@ export = class EditCommand extends commando.Command {
             description: 'edits a faq question',
             aliases: ['change', 'set'],
             userPermissions: ['MANAGE_MESSAGES'],
+            guildOnly: true,
             args: [
                 {
                     key: 'id',

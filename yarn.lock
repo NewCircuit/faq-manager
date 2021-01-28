@@ -260,11 +260,13 @@ detect-libc@^1.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
-"discord.js-commando@https://github.com/discordjs/Commando.git#198d7604e3725ee88dceab9b5f296edb1b7580a5":
-  version "0.11.0-dev"
-  resolved "https://github.com/discordjs/Commando.git#198d7604e3725ee88dceab9b5f296edb1b7580a5"
+discord.js-commando@discordjs/commando:
+  version "0.11.1"
+  resolved "https://codeload.github.com/discordjs/commando/tar.gz/2b0855ca5846d50d4c80467b52f17156ad560e3d"
   dependencies:
     common-tags "^1.8.0"
+    emoji-regex "^9.2.0"
+    is-promise "^4.0.0"
     require-all "^3.0.0"
 
 discord.js@^12.3.1:
@@ -293,6 +295,11 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
+
+emoji-regex@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.0.tgz#a26da8e832b16a9753309f25e35e3c0efb9a066a"
+  integrity sha512-DNc3KFPK18bPdElMJnf/Pkv5TXhxFU3YFDEuGLDRtPmV4rkmCjBkCSEp22u6rBHdSN9Vlp/GK7k98prmE1Jgug==
 
 esprima@^4.0.0:
   version "4.0.1"
@@ -478,6 +485,11 @@ is-fullwidth-code-point@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
   integrity sha1-o7MKXE8ZkYMWeqq5O+764937ZU8=
+
+is-promise@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-4.0.0.tgz#42ff9f84206c1991d26debf520dd5c01042dd2f3"
+  integrity sha512-hvpoI6korhJMnej285dSg6nu1+e6uxs7zG3BYAm5byqDsgJNWwxzM6z6iZiAgQR4TJ30JmBTOwqZUw3WlyH3AQ==
 
 is-typedarray@~1.0.0:
   version "1.0.0"

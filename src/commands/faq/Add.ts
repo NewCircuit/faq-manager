@@ -13,6 +13,7 @@ export = class AddCommand extends commando.Command {
             memberName: 'add',
             description: 'Adds a faq message',
             userPermissions: ['MANAGE_MESSAGES'],
+            guildOnly: true,
             args: [
                 {
                     key: 'question',
@@ -28,7 +29,7 @@ export = class AddCommand extends commando.Command {
         });
         this.channel = config.channel_id
     }
-    
+
     public async run(msg: CommandoMessage, {question, answer}: { question: string, answer: string }): Promise<null> {
         let embed = faqEmbed({question, answer});
         let channel = (await this.client.channels.fetch(this.channel, true)) as TextChannel;

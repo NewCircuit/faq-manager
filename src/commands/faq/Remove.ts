@@ -14,6 +14,7 @@ export = class SyncCommand extends commando.Command {
             description: 'Deletes a faq',
             argsPromptLimit: 0,
             userPermissions: ['MANAGE_MESSAGES'],
+            guildOnly: true,
             args: [
                 {
                     key: "id",
