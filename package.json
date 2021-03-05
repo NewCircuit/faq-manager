@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
-  "author": "Matthew",
-  "license": "MIT",
+  "author": "NewCircuit <https://github.com/NewCircuit>",
+  "license": "GPL-3.0",
   "scripts": {
     "start": "tsc && node build/bot.js",
     "build": "tsc"
